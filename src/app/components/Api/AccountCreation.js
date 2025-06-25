@@ -1,5 +1,5 @@
 export const AccountCreation = async(token) => {
-    const url = process.env.API_URL_ACCOUNT;
+    const url = process.env.NEXT_PUBLIC_API_URL_ACCOUNT;
     const apiKey = token;
 
 

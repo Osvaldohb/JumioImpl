@@ -1,7 +1,7 @@
 export const FetchToken = async() => {
-    const url = process.env.API_URL;
-    const apiKey = process.env.API_KEY;
-    const apiSecret = process.env.API_SECRET;
+    const url = process.env.NEXT_PUBLIC_API_URL;
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const apiSecret = process.env.NEXT_PUBLIC_API_SECRET;
     if (!url && !apiKey && !apiSecret) {
         throw new Error('API is not defined in the environment variables');
     }
