@@ -6,14 +6,13 @@ import { JumioSdkComponent } from "@jumio/websdk";
 
 const JumioComponent = ({token}) => {
   return (
-    <div>
+    <div className='h-screen'>
 
 
         <jumio-sdk dc="us" token={token}>
     
         </jumio-sdk>
 
-        <JumioSdkComponent  dc="us" token={token}></JumioSdkComponent>
 
     </div>
   )
