@@ -2,7 +2,10 @@
 import { useEffect, useState } from 'react'
 import { AccountCreation } from '../Api/AccountCreation'
 import { FetchToken } from '../Api/Fetch'
-import JumioComponent from './JumioComponent'
+
+import dynamic from 'next/dynamic'
+
+const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
 export default function JumioJsx() {
   const [token, setToken] = useState('')

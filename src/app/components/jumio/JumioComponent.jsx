@@ -12,6 +12,7 @@ const JumioComponent = ({token}) => {
         <jumio-sdk dc="us" token={token}>
     
         </jumio-sdk>
+       
 
 
     </div>
