@@ -1,5 +1,5 @@
 export const JumioAccountCreation = async() => {
-    const url = "https://jumio-back.vercel.app/api/Fetch";
+    const url = process.env.NEXT_PUBLIC_API_URL;
 
     try {
         const response = await fetch(url, {
