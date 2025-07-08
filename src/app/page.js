@@ -205,7 +205,7 @@ export default function Home() {
               </div>
 
             </div>
-                <Footer />
+                <Footer direction={'/requerimientos'} enabled={true}/>
 
           </>
         ) : (

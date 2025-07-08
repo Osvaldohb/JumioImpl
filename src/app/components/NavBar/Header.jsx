@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import "./style.css";
-import inter from "../Fonts/Fonts";
 
 function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
 

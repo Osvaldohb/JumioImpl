@@ -158,6 +158,7 @@ input:focus {
 }
 
 .button_P2 {
+    cursor: pointer;
     width: 100%;
     height: 48px;
     background: #55AC68 0% 0% no-repeat padding-box;
