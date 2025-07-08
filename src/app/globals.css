@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'animate.css';
 select:hover {
     background-color: initial;
 }
@@ -641,6 +642,7 @@ input:focus {
 
 .containerRender {
     padding-bottom: 500px;
+    height: 82vh;
 }
 
 .containerRender--size {
@@ -772,8 +774,7 @@ input::placeholder {
 }
 
 .line {
-    color: #cfcfcf;
-    margin-top: 8%;
+    color: #e4e4e4;
 }
 
 .lineSimple {

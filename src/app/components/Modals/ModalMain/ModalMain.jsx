@@ -3,6 +3,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import Image from 'next/image';
+import './ModalMain.css'; // Ensure you have the correct path to your CSS file
 
 export default function MyVerticallyCenteredModal({ modalShow, onHide }) {
 
@@ -13,8 +14,8 @@ export default function MyVerticallyCenteredModal({ modalShow, onHide }) {
   return (
   <>
 
-      <Dialog open={modalShow}  onClose={() => {}} className="relative z-50">
-        <div className="fixed inset-0 flex items-center justify-center p-4">
+      <Dialog open={modalShow}  onClose={() => {}} className=" relative z-50 fade animate__animated animate__fadeIn modal show">
+        <div className="fixed inset-0 flex items-center justify-center p-4 ModalMain__shadow">
         <DialogPanel className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-xl space-y-4">
           <DialogTitle className="text-lg font-medium text-gray-900">
             Uso de Cookies

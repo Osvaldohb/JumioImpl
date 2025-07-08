@@ -25,14 +25,14 @@ const Requerimientos = () => {
 
   return (
     <>
-          <main className="containerRender onContentExpands">
+          <main className="containerRender onContentExpands animate__animated animate__fadeIn">
           <section className="containerInfo_P2">
             <div className="containerIdent_P2">
               <div className="txtOp_P2">Requerimientos</div>
               <div className="txtSilver_P2">
                 Antes de iniciar, por favor confirma lo siguiente:
               </div>
-              <hr className="line" />
+              <hr className="line my-6" />
               <div>
                 <table>
                   <tbody>
