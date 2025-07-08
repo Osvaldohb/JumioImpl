@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { AccountCreation } from '../Api/AccountCreation'
-import { FetchToken } from '../Api/Fetch'
 
 import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
