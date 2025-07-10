@@ -6,6 +6,7 @@ import { FetchToken } from '../Api/Fetch'
 
 import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
+import { FetchAccAWS } from '../Api/FetchAccAWS'
 
 const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
@@ -15,8 +16,9 @@ export default function JumioJsx() {
   useEffect(() => {
     const fetchSdkToken = async () => {
       try {
-        const tokenData = await JumioAccountCreation()
-       setSdkToken(tokenData)
+        const tokenData = await FetchAccAWS()
+        console.log('Jumio SDK Token:', tokenData)
+       setSdkToken(tokenData.sdk.token)
       } catch (error) {
         console.error('Error generating Jumio SDK token:', error)
       }
