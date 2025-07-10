@@ -17,7 +17,6 @@ export default function JumioJsx() {
     const fetchSdkToken = async () => {
       try {
         const tokenData = await FetchAccAWS()
-        console.log('Jumio SDK Token:', tokenData)
        setSdkToken(tokenData.sdk.token)
       } catch (error) {
         console.error('Error generating Jumio SDK token:', error)
