@@ -1,3 +1,5 @@
+'use client';
+
 import JumioJsx from "./components/jumio/Jumio";
 
 
