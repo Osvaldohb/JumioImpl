@@ -1,6 +1,5 @@
-export const FetchAccAWS = async() => {
+export const FetchAccAWS = async(cpv) => {
     const url = process.env.NEXT_PUBLIC_API_URL_TEST;
-
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -9,7 +8,7 @@ export const FetchAccAWS = async() => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "cpv": "B63C40D248"
+                "cpv": cpv
             })
         })
         if (!response.ok) {
