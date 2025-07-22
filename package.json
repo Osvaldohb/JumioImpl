@@ -12,9 +12,12 @@
         "@headlessui/react": "^2.2.4",
         "@jumio/websdk": "^0.3.1",
         "animate.css": "^4.1.1",
+        "bootstrap": "^5.3.7",
         "next": "15.3.4",
         "react": "^19.0.0",
-        "react-dom": "^19.0.0"
+        "react-bootstrap": "^2.10.10",
+        "react-dom": "^19.0.0",
+        "react-select": "^5.10.2"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",

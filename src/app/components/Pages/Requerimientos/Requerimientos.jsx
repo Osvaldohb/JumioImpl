@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'; 
 import "./requerimientos.css";
 import Footer from '../../Footer/Footer';
 
