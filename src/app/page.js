@@ -17,7 +17,7 @@ export default function Home() {
 
   const searchParams = useSearchParams()
   const isRunned = useRef(false);
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(true);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState("");
