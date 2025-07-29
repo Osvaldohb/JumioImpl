@@ -1,22 +1,43 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
+import { AccountCreation } from '../Api/AccountCreation'
+import { FetchToken } from '../Api/Fetch'
 
 import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
+import { FetchAccAWS } from '../Api/FetchAccAWS'
+import { useSearchParams } from 'next/navigation'
+import { useAppContext } from '../../context/AppContext'
 
 const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
 export default function JumioJsx() {
   const [sdkToken, setSdkToken] = useState('')
+  const searchParams = useSearchParams()
+  const { setIdJumio } = useAppContext()
 
   useEffect(() => {
+    const cpv = searchParams.get('i')
+    if (!cpv) {
+      console.error('No cpv found in search params')
+      return
+    }
     const fetchSdkToken = async () => {
       try {
-        const tokenData = await JumioAccountCreation()
-       setSdkToken(tokenData)
+        const tokenData = await FetchAccAWS(cpv)
+        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {
+          throw new Error('Invalid token data received')
+          
+        }else{
+        console.log('Token data:', tokenData)
+        setIdJumio(tokenData.idJumio)  
+        setSdkToken(tokenData.sdk.token)
+        }
+
+
       } catch (error) {
-        console.error('Error generating Jumio SDK token:', error)
+        alert('Error generating Jumio SDK token:', error)
       }
     }
 
