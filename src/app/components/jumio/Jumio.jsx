@@ -8,13 +8,14 @@ import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
 import { FetchAccAWS } from '../Api/FetchAccAWS'
 import { useSearchParams } from 'next/navigation'
+import { useAppContext } from '../../context/AppContext'
 
 const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
 export default function JumioJsx() {
   const [sdkToken, setSdkToken] = useState('')
   const searchParams = useSearchParams()
-
+  const { setIdJumio } = useAppContext()
 
   useEffect(() => {
     const cpv = searchParams.get('i')
@@ -25,10 +26,12 @@ export default function JumioJsx() {
     const fetchSdkToken = async () => {
       try {
         const tokenData = await FetchAccAWS(cpv)
-        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token) {
+        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {
           throw new Error('Invalid token data received')
           
         }else{
+        console.log('Token data:', tokenData)
+        setIdJumio(tokenData.idJumio)  
         setSdkToken(tokenData.sdk.token)
         }
 
