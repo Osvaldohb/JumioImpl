@@ -5,21 +5,25 @@ import { JumioSdkComponent } from "@jumio/websdk";
 import { useRef } from 'react';
 import { ApiJumioRetrieval } from '../Api/ApiJumioRetrieval';
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
+
 
 
 const JumioComponent = ({token}) => {
 
     const {IdJumio} = useAppContext()
     const jumioRef = useRef(null);
+    const router = useRouter();
 
   useEffect(() => {
   //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
 
     const handleStatus = async (event) => {
-      console.log(IdJumio)
+     // console.log(IdJumio)
      // console.log('Workflow status:', event.detail);
       const response = await ApiJumioRetrieval(IdJumio)
-      console.log('Jumio status:', response);
+      //console.log('Jumio status:', response);
+      router.push('/dataconfirm');
 
     }
 

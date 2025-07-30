@@ -16,9 +16,10 @@ export default function JumioJsx() {
   const [sdkToken, setSdkToken] = useState('')
   const searchParams = useSearchParams()
   const { setIdJumio } = useAppContext()
+  const { cpvI } = useAppContext()
 
   useEffect(() => {
-    const cpv = searchParams.get('i')
+    const cpv = localStorage.getItem('sCpv') || cpvI
     if (!cpv) {
       console.error('No cpv found in search params')
       return
@@ -30,7 +31,7 @@ export default function JumioJsx() {
           throw new Error('Invalid token data received')
           
         }else{
-        console.log('Token data:', tokenData)
+
         setIdJumio(tokenData.idJumio)  
         setSdkToken(tokenData.sdk.token)
         }

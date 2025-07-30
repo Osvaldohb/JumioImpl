@@ -7,9 +7,13 @@ const AppContext = createContext()
 
 export const AppProvider = ({children}) => {
     const [IdJumio,setIdJumio] = useState('')
+    const [cpvI,setCpvI] = useState('')
+    const [curpValidate,setCurpValidate] = useState('')
+    const [pais,setPais] = useState('')
+    const [paisIso2,setPaisIso2] = useState('')
 
     return (
-        <AppContext.Provider value={{IdJumio,setIdJumio}}>
+        <AppContext.Provider value={{IdJumio,setIdJumio,cpvI,setCpvI,curpValidate,setCurpValidate,pais,setPais,paisIso2,setPaisIso2}}>
             {children}
         </AppContext.Provider>
     )

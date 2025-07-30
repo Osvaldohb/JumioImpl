@@ -2,6 +2,7 @@
 import Header from "./components/NavBar/Header";
 import "./globals.css";
 import inter from "./components/Fonts/Fonts";
+import { AppProvider } from './context/AppContext';
 
   export const metadata = {
   title: 'DPR',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
 
 
   return (
+    <AppProvider>
     <html lang="en">
 
       <body
@@ -27,5 +29,6 @@ export default function RootLayout({ children }) {
        
       </body>
     </html>
+    </AppProvider>
   );
 }

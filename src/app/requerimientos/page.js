@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react'
 import Requerimientos from '../components/Pages/Requerimientos/Requerimientos'
 
-const page = () => {
+const Page = () => {
   return (
     <>
             <Requerimientos />
@@ -9,4 +11,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

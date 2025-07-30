@@ -9,6 +9,7 @@ import { mtfindCpv } from "./components/Api/mtfindCpv";
 import { validateCurp } from "./components/Api/validateCurp";
 import { useSearchParams } from 'next/navigation'
 import MyVerticallyCenteredModal from "./components/Modals/ModalMain/ModalMain";
+import { useAppContext } from './context/AppContext';
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [validateCurpCpv, setValidateCurpCpv] = useState(true);
   const i = searchParams.get('i')
+  const { setCpvI } = useAppContext();
 
 
     const onContinueModel = async () => {
@@ -57,6 +59,7 @@ export default function Home() {
         const obj = {
           cpv: i
         };
+        setCpvI(i);
         console.log(obj)
 
         const response = await getCpvCurpPais(obj);

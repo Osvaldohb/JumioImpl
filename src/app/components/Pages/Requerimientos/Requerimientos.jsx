@@ -1,17 +1,22 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'; 
 import "./requerimientos.css";
 import Footer from '../../Footer/Footer';
+import Link from 'next/link';
+import { useAppContext } from '../../../context/AppContext';
 
 const Requerimientos = () => {
 
   const [isChecked, setChecked] = useState(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
+  const { cpvI } = useAppContext();
+
 
 
     const handleButtonClick = async () => {
+      // Lógica para manejar el clic del botón
 
   };
 
@@ -70,13 +75,17 @@ const Requerimientos = () => {
                     </>
                   ) : (
                     <>
+                    <Link href={'/paises'}>
                       <button
                         className="button_P2 animate__animated animate__fadeIn"
                         onClick={handleButtonClick}
+                        direction={'/requerimientos'}
                       >
                         <span className="txtButton_P2">Continuar</span>
                       </button>
+                      </Link>
                     </>
+
                   )}
                 </div>
               </section>

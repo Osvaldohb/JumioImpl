@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
+import { useAppContext } from '../../../context/AppContext';
 
 function Pantalla2() {
 
-    const [strCPV, setStrCPV] = useState(localStorage.getItem("sCpv"));
+    const { cpvI } = useAppContext();
+
+  
 
     return (
         <>
@@ -12,7 +15,7 @@ function Pantalla2() {
                     <div className='txtOp_P2'>Operación/Operation</div>
                     <div className='txtVer_P2'>Verificación de Identificación Personal</div>
                     <div className='txtOp_P2'>CPV/PVC</div>
-                    <div className='txtVer_P2'>{strCPV}</div>
+                    <div className='txtVer_P2'>{cpvI}</div>
                     <div className='txtOp_P2'>Remitente/Sender</div>
                     <div className='txtVer_P2'>Business Prey</div>
                 </div>
