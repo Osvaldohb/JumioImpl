@@ -3,6 +3,7 @@ import Header from "./components/NavBar/Header";
 import "./globals.css";
 import inter from "./components/Fonts/Fonts";
 import { AppProvider } from './context/AppContext';
+import { Suspense } from "react";
 
   export const metadata = {
   title: 'DPR',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
 
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <AppProvider>
     <html lang="en">
 
@@ -30,5 +32,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
     </AppProvider>
+    </Suspense>
   );
 }
