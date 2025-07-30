@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useEffect, useState } from 'react'
+import { Suspense, use, useEffect, useState } from 'react'
 import { AccountCreation } from '../Api/AccountCreation'
 import { FetchToken } from '../Api/Fetch'
 
@@ -46,5 +46,9 @@ export default function JumioJsx() {
 
   if (!sdkToken) return <p>Loading Jumio...</p>
 
-  return <JumioComponent token={sdkToken} />
+  return(
+    <Suspense fallback={<div>Loading Jumio Component...</div>}>
+      <JumioComponent token={sdkToken} />
+    </Suspense>
+  )
 }

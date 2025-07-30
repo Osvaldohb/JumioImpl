@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import JumioJsx from '../components/jumio/Jumio'
 
 const Page = () => {
   return (
     <div>
-      <JumioJsx />
+      <Suspense fallback={<div>Loading...</div>}>
+        <JumioJsx />
+      </Suspense>
     </div>
   )
 }
