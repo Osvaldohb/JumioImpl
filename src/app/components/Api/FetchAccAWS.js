@@ -17,7 +17,7 @@ export const FetchAccAWS = async(cpv) => {
         const data = await response.json();
         return data;
     } catch (err) {
-        console.error('Error in JumioAccountCreation:', err);
+        console.error('Error in FetchAccAWS:', err);
         throw err;
     }
 }
