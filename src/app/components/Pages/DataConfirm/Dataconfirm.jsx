@@ -9,11 +9,11 @@ const Dataconfirm = () => {
       const [loading, setLoading] = useState(false);
 
 
-        const [firstName, setFirstName] = useState(localStorage.getItem("nombre") || '');
-        const [paternalLastName, setPaternalLastName] = useState(localStorage.getItem("paterno") || '');
-        const [maternalLastName, setMaternalLastName] = useState(localStorage.getItem("materno") || '');
-        const [birthDate, setBirthDate] = useState(localStorage.getItem("fechaNacimientoFront") || '');
-        const [claveDeElector, setClaveDeElector] = useState(localStorage.getItem("curpValidate") || '');
+        const [firstName, setFirstName] = useState('');
+        const [paternalLastName, setPaternalLastName] = useState('');
+        const [maternalLastName, setMaternalLastName] = useState('');
+        const [birthDate, setBirthDate] = useState('');
+        const [claveDeElector, setClaveDeElector] = useState('');
         const [sexo, setSexo] = useState("");
         const [nacionalidad, setNacionalidad] = useState("");
         const [nacionalidadISO, setNacionalidadISO] = useState("");
@@ -21,6 +21,17 @@ const Dataconfirm = () => {
         const [showStatus, setShowStatus] = useState(null);
         const [showMessage, setShowMessage] = useState('');
         const [verNameFull, setverNameFull] = useState(false);
+
+        useEffect(() => {
+          setFirstName(localStorage.getItem("nombre") || '');
+          setPaternalLastName(localStorage.getItem("paterno") || '');
+          setMaternalLastName(localStorage.getItem("materno") || '');
+          setBirthDate(localStorage.getItem("fechaNacimientoFront") || '');
+          setClaveDeElector(localStorage.getItem("curpValidate") || '');
+          setSexo(localStorage.getItem("sexo") || '');
+          setNacionalidad(localStorage.getItem("nacionalidad") || '');
+          setNacionalidadISO(localStorage.getItem("nacionalidadISO") || '');
+        }, []);
 
     useEffect(() => {
     setLoading(false);
