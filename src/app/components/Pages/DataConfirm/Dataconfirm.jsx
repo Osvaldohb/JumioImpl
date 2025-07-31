@@ -3,6 +3,9 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { getOcrPais } from '../../Api/getOcrPais';
+import { ApiJumioFaceMatchToken } from '../../Api/ApiJumioFaceMatchToken';
+import { useAppContext } from '../../../context/AppContext';
+import Link from 'next/link';
 
 const Dataconfirm = () => {
 
@@ -21,6 +24,8 @@ const Dataconfirm = () => {
         const [showStatus, setShowStatus] = useState(null);
         const [showMessage, setShowMessage] = useState('');
         const [verNameFull, setverNameFull] = useState(false);
+        const {cpvI} = useAppContext();
+        const {setTokenJumio} = useAppContext();
 
         useEffect(() => {
           setFirstName(localStorage.getItem("nombre") || '');
@@ -33,7 +38,27 @@ const Dataconfirm = () => {
           setNacionalidadISO(localStorage.getItem("nacionalidadISO") || '');
         }, []);
 
+
+        
+      const fetchData = async () => {
+        const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
+        if (!data) {
+          console.error('No data found');
+          return;
+        }
+        if (data.status === 200) {
+          setTokenJumio(data.sdk.token);
+
+        } else {
+          console.error('Error fetching data:', data.message);
+          throw new Error(data.message);
+        }
+
+      }
+
     useEffect(() => {
+      fetchData();
+
     setLoading(false);
 
 
@@ -125,8 +150,21 @@ const Dataconfirm = () => {
               </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
+ 
           </div>
         )}
+
+           <Link href="/jumiocomponent" className="btnBack_P2">
+              <section className="containerButtonOnExpands_P2 m-1.5">
+                  <button
+                    className="btnVer_P14OK buttonExpandsBase"
+                     >
+                    <span className="txtVer_P14OK">Continuar</span>
+                  </button>
+                  <br />
+                </section>
+            </Link>
+   
       </div>
 
 

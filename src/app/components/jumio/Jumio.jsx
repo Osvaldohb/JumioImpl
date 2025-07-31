@@ -17,6 +17,7 @@ export default function JumioJsx() {
   const searchParams = useSearchParams()
   const { setIdJumio } = useAppContext()
   const { cpvI } = useAppContext()
+  const { tokenJumio } = useAppContext()
 
   useEffect(() => {
     const cpv = localStorage.getItem('sCpv') || cpvI
@@ -25,6 +26,10 @@ export default function JumioJsx() {
       return
     }
     const fetchSdkToken = async () => {
+      if (tokenJumio) {
+        setSdkToken(tokenJumio)
+        return
+      }
       try {
         const tokenData = await FetchAccAWS(cpv)
         if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {

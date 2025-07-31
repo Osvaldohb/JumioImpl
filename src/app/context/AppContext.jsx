@@ -11,9 +11,10 @@ export const AppProvider = ({children}) => {
     const [curpValidate,setCurpValidate] = useState('')
     const [pais,setPais] = useState('')
     const [paisIso2,setPaisIso2] = useState('')
+    const[tokenJumio,setTokenJumio] = useState('')
 
     return (
-        <AppContext.Provider value={{IdJumio,setIdJumio,cpvI,setCpvI,curpValidate,setCurpValidate,pais,setPais,paisIso2,setPaisIso2}}>
+        <AppContext.Provider value={{IdJumio,setIdJumio,cpvI,setCpvI,curpValidate,setCurpValidate,pais,setPais,paisIso2,setPaisIso2,tokenJumio,setTokenJumio}}>
             {children}
         </AppContext.Provider>
     )
