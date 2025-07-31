@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Dataconfirm = () => {
 
-      const [loading, setLoading] = useState(false);
+      const [loading, setLoading] = useState(true);
 
 
         const [firstName, setFirstName] = useState('');
@@ -47,6 +47,7 @@ const Dataconfirm = () => {
           return;
         }
         if (data.status === 200) {
+          console.log('Data fetched successfully:', data);
           setTokenJumio(data.sdk.token);
 
         } else {
@@ -57,9 +58,13 @@ const Dataconfirm = () => {
       }
 
     useEffect(() => {
-      fetchData();
+    
+    setTimeout(() => {
 
-    setLoading(false);
+    fetchData();
+
+      setLoading(true);
+    }, 6000);
 
 
     async function createSession() {
@@ -116,7 +121,7 @@ const Dataconfirm = () => {
    <>
    
       <div className="containerRender">
-        {loading ? (
+        {!loading ? (
           <div className="spinner"></div>
         ) : (
           <div className="containerInfo_P2">
@@ -150,12 +155,8 @@ const Dataconfirm = () => {
               </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
- 
-          </div>
-        )}
-
-           <Link href="/jumiocomponent" className="btnBack_P2">
-              <section className="containerButtonOnExpands_P2 m-1.5">
+            <Link href="/jumiocomponent" className="btnBack_P2">
+              <section className="containerButtonOnExpands_P2 mt-4">
                   <button
                     className="btnVer_P14OK buttonExpandsBase"
                      >
@@ -164,6 +165,11 @@ const Dataconfirm = () => {
                   <br />
                 </section>
             </Link>
+          </div>
+          
+        )}
+
+
    
       </div>
 
