@@ -4,7 +4,8 @@ import React from 'react'
 import { createContext,useContext,useState } from 'react'
 
 const AppContext = createContext()
-
+// This context will be used to share state across the application
+// such as Jumio ID, CPV, CURP validation, country, and token
 export const AppProvider = ({children}) => {
     const [IdJumio,setIdJumio] = useState('')
     const [cpvI,setCpvI] = useState('')
