@@ -14,6 +14,7 @@ const JumioComponent = ({token}) => {
     const {IdJumio} = useAppContext()
     const jumioRef = useRef(null);
     const router = useRouter();
+    const {tokenJumio} = useAppContext();
 
   useEffect(() => {
   //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
@@ -22,6 +23,10 @@ const JumioComponent = ({token}) => {
      // console.log(IdJumio)
      // console.log('Workflow status:', event.detail);
       const response = await ApiJumioRetrieval(IdJumio)
+      if(tokenJumio){
+          console.log(response)
+      }
+     
       //console.log('Jumio status:', response);
       router.push('/dataconfirm');
 
