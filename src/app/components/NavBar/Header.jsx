@@ -1,9 +1,27 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./style.css";
 
 function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
+
+ const [interName, setInterName] = useState('Autenticación Personal');
+ const [titleMain, setTitleMain] = useState('Enrolamiento');
+
+ useEffect(() => {
+
+  if(localStorage.getItem('interName')){
+    setInterName(localStorage.getItem('interName'));
+  }
+
+  if(localStorage.getItem('TitleMain')){
+    setTitleMain(localStorage.getItem('TitleMain'));
+  
+  }
+ 
+ }, []);
+
+
 
 
   const onBackPage = async () => {
@@ -48,7 +66,7 @@ function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
             <img src='/assets/aicm.svg' />
           </div>
           <div>
-            <p className='txtTitleDem_P2' >Enrolamiento</p>
+            <p className='txtTitleDem_P2' >{titleMain}</p>
           </div>
         </div>
 
@@ -139,7 +157,7 @@ function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
 
       {/* <HorizontalNonLinearStepper/> */}
       <div className={titleSizing ? "backIdenPersonal_P2--size":"backIdenPersonal_P2"}>
-        <p className="txtIdenPerso_P2">{title}</p>
+        <p className="txtIdenPerso_P2">{interName}</p>
       </div>
     </>
   );

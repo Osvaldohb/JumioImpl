@@ -15,6 +15,12 @@ const JumioComponent = ({token}) => {
     const jumioRef = useRef(null);
     const router = useRouter();
     const {tokenJumio} = useAppContext();
+    const [cpv, setCpv] = useState('');
+    const {cpvI} = useAppContext();
+
+    useEffect(()=>{
+     setCpv(localStorage.getItem('sCpv') || cpvI);
+    },[])
 
   useEffect(() => {
   //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
@@ -24,11 +30,23 @@ const JumioComponent = ({token}) => {
      // console.log('Workflow status:', event.detail);
       const response = await ApiJumioRetrieval(IdJumio)
       if(tokenJumio){
-          console.log(response)
+         console.log(response)
+         console.log(response.status)
+  
+        if(response.status === 200){
+            router.push('/bandeja');
+        }else{
+            router.push('/?i='+cpv);
+        }
+        return;
+         
+      }else{
+        router.push('/dataconfirm');
       }
      
       //console.log('Jumio status:', response);
-      router.push('/dataconfirm');
+      
+
 
     }
 

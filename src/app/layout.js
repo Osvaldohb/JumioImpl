@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={` antialiased ${inter.className} initBack_P2 animate__animated animate__fadeIn`}
       >
-        <Header title={'Autenticación Personal'}/>
+        <Header/>
         {children}
        
       </body>

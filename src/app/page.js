@@ -36,6 +36,10 @@ export default function Home() {
 
 
    useEffect(() => {
+
+    localStorage.setItem('interName','Autenticación Personal');
+    localStorage.setItem('TitleMain','Enrolamiento');
+
     if (isRunned.current) return;
     isRunned.current = true;
 
