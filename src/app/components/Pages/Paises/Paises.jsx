@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import Select from 'react-select';
 import './paises.css';
 import Footer from '../../Footer/Footer';
 import { Form, Spinner, Modal } from 'react-bootstrap';
@@ -10,6 +9,9 @@ import { getPaisByIso } from '../../Api/getPaisByIso';
 import { mtfindCpv } from '../../Api/mtfindCpv';
 import { useAppContext } from '../../../context/AppContext';
 import Link from 'next/link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import dynamic from 'next/dynamic';
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 
 const Paises = () => {
@@ -36,12 +38,12 @@ const Paises = () => {
   const [mounted, setMounted] = useState(false);
   const {setPais}= useAppContext();
   const {setPaisIso2}= useAppContext();
-
-
-
-
-
   
+  const showModalError = (title, message) => {
+    setShowStatus(title);
+    setShowMessage(message);
+    setShow(true);
+  };
 
   useEffect(() => setMounted(true), []);
 
@@ -76,31 +78,27 @@ const Paises = () => {
     //console.log('Validar Face Match...');
   };
 
-  const onValidateCurp = async () => {
+const onValidateCurp = async () => {
     //console.log('Validar CURP:', curpStr);
-    setGame('2');
-    const curpVal = mounted ? curpValidate : null;
-    if (localStorage.getItem("curpValidate") === curpStr) {
-      const objPerson = { cpv: cpvI };
-      const responseIdPerson = await mtfindCpv(objPerson);
+  setGame('2');
+  const curpVal = mounted ? curpValidate : null;
+  if (localStorage.getItem("curpValidate") === curpStr) {
+    const objPerson = { cpv: cpvI };
+    const responseIdPerson = await mtfindCpv(objPerson);
       //console.log('Response ID Person:', responseIdPerson);
-      if (responseIdPerson.status === 400) {
-        setGame('3');
-        setBlContinueOp('3');
-      } else if (responseIdPerson.status === 200) {
-        setGame('3');
-        setBlContinueOp('4');
-      } else {
-        setShow(true);
-        setShowStatus(responseIdPerson.status);
-        setShowMessage(responseIdPerson.message);
-      }
+    if (responseIdPerson.status === 400) {
+      setGame('3');
+      setBlContinueOp('3');
+    } else if (responseIdPerson.status === 200) {
+      setGame('3');
+      setBlContinueOp('4');
     } else {
-      setShow(true);
-      setShowStatus('Credenciales inválidas');
-      setShowMessage('El Número de Identificación Nacional no es correcto.');
+      showModalError(`Error ${responseIdPerson.status}`, responseIdPerson.message);
     }
-  };
+  } else {
+    showModalError('Credenciales inválidas', 'El Número de Identificación Nacional no es correcto.');
+  }
+};
 
   const handleClose = () => setShow(false);
   const onModalShow = () => setModalShow(true);
@@ -238,7 +236,7 @@ const Paises = () => {
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose} centered backdrop="static">
+    <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
         <Modal.Body>
           <div className="msjTitleModalDiv">{showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>
