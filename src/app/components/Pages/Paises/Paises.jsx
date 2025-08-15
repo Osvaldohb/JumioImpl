@@ -221,13 +221,13 @@ const onValidateCurp = async () => {
                 {blContinueOp === '3' && (
                   <Link href={'/infocredencial'}>
                     <button className="button_P2 animate__animated animate__fadeIn" >
-                      <span className="txtButton_P2">1-Continuar</span>
+                      <span className="txtButton_P2">Continuar</span>
                     </button>
                   </Link>
                 )}
                 {blContinueOp === '4' && (
                   <button className="button_P2 animate__animated animate__fadeIn" onClick={onValidateFaceMach}>
-                    <span className="txtButton_P2">2-Continuar</span>
+                    <span className="txtButton_P2">Continuar</span>
                   </button>
                 )}
               </section>
