@@ -79,7 +79,7 @@ const InfoCredencial = () => {
               <div className="btnContinue">
                 {!isButtonEnabled ? (
                   <button className="btnVer_P3" disabled>
-                    <span className="txtVer_P3">1-Continuar</span>
+                    <span className="txtVer_P3">Continuar</span>
                   </button>
                 ) : (
                   <Link href={'/imganterior'}>
@@ -87,7 +87,7 @@ const InfoCredencial = () => {
                       className="button_P2 animate__animated animate__fadeIn"
                       onClick={handleButtonClick}
                     >
-                      <span className="txtButton_P2">2-Continuar</span>
+                      <span className="txtButton_P2">Continuar</span>
                     </button>
                   </Link>
                 )}
