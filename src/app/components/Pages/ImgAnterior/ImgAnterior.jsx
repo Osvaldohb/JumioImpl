@@ -27,14 +27,10 @@ const ImgAnterior = () => {
                  <img 
                     src='assets/frente-credencial.png' 
                     alt="check" 
-                    style={{ width: '250px', height: 'auto', display: 'block', margin: '0 auto' }} 
+                    style={{ width: '150px', height: 'auto', display: 'block', margin: '0 auto' }} 
                     />
             </div>
-            <div style={{height: '100px'}}></div> 
             <hr className="line my-6" />
-
-            
-      
 
             <section className="containerButtonOnExpands_P2" style={{ marginTop: '2rem' }}>
               <div className="btnContinue">
