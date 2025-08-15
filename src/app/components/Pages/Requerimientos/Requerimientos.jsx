@@ -37,6 +37,7 @@ const Requerimientos = () => {
               <div className="txtSilver_P2">
                 Antes de iniciar, por favor confirma lo siguiente:
               </div>
+              
               <hr className="line my-6" />
               <div>
                 <table>

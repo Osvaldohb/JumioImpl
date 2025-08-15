@@ -219,7 +219,7 @@ const onValidateCurp = async () => {
                 </>
                 )}
                 {blContinueOp === '3' && (
-                  <Link href={'/infocredencial'}>
+                  <Link href={'/documentos'}>
                     <button className="button_P2 animate__animated animate__fadeIn" >
                       <span className="txtButton_P2">Continuar</span>
                     </button>

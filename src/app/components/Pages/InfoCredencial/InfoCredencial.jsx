@@ -10,6 +10,7 @@ const InfoCredencial = () => {
   const [check1, setCheck1] = useState(false)
   const [check2, setCheck2] = useState(false)
   const { cpvI } = useAppContext()
+  const { setCpvI } = useAppContext() // aquí lo traes
 
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
@@ -23,7 +24,7 @@ const InfoCredencial = () => {
         <section className="containerInfo_P2">
           <div className="containerIdent_P2">
             <div className="txtOp_P2" style={{ color: '#2A67E1' }}>
-              Información de tu Credencial para votar
+              Información de tu documento
             </div>
             <div className="txtSilver_P2">
               Escaneo de tu documento de Identificación
@@ -50,7 +51,7 @@ const InfoCredencial = () => {
                       </div>
                     </td>
                   </tr>
-                  <tr style={{ height: '16px' }}></tr> {/* espacio entre filas */}
+                  <tr><td style={{ height: '16px' }}></td></tr>
                   <tr>
                     <td className="containerCheck_P28 spaceRadio" style={{ verticalAlign: 'top' }}>
                       <input
@@ -67,7 +68,7 @@ const InfoCredencial = () => {
                       </div>
                     </td>
                   </tr>
-                  <tr style={{ height: '100px' }}></tr> {/* espacio entre filas */}
+                  <tr style={{ height: '100px' }}></tr>
 
                 </tbody>
               </table>
@@ -82,7 +83,9 @@ const InfoCredencial = () => {
                     <span className="txtVer_P3">Continuar</span>
                   </button>
                 ) : (
-                  <Link href={'/imganterior'}>
+                  <Link
+                    href={cpvI === 'credencial' ? '/imganterior' : cpvI === 'pasaporte' ? '/pasaporteanterior' : '#'}
+                  >
                     <button
                       className="button_P2 animate__animated animate__fadeIn"
                       onClick={handleButtonClick}
@@ -93,6 +96,7 @@ const InfoCredencial = () => {
                 )}
               </div>
             </section>
+
           </div>
         </section>
         <Footer />
